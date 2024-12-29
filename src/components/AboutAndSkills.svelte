@@ -25,11 +25,11 @@
         <h2 class="text-5xl font-bold text-white mb-8">About Me</h2>
         <p class="text-2xl text-gray-300 leading-relaxed">
             Hi! I'm Sameer, a 3rd-year Computer Engineering student at McMaster University. 
-            I'm passionate about AI applications and embedded systems, particularly in spacecraft and automotive vehicles.
+            I'm passionate about AI applications and embedded systems, particularly in spacecraft, computing and automotive vehicles.
             
             <br><br>
             When I'm not immersed in schoolwork, you'll likely find me experimenting with new projects, 
-            designing models for my 3D printer, or working on something exciting for a Hackathon. And if I'm not doing any of that, I'm probably at the gym or enjoying a good book :D
+            I enjoy doing fullstack web development, designing models for my 3D printer, or working on something exciting for a Hackathon. And if I'm not doing any of that, I'm probably at the gym or enjoying a good book :D
         </p>
         <br>
         <div class="flex flex-col md:flex-row gap-4">
