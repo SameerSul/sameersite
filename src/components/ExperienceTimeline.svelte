@@ -16,7 +16,7 @@
       images: ["/path/to/mist_image1.jpg", "/path/to/mist_image2.jpg", "/path/to/mist_image3.jpg"]
     },
     {
-      role: "Founder & Lead Software Engineer",
+      role: "Lead Software Engineer",
       company: "Brainforge AI",
       date: "Jul 2024 - Present",
       description: "Architected and developed an innovative educational game using Unity, integrating Google's Gemini AI model. Led full-stack development efforts, AI code implementation, and Unity game development.",
