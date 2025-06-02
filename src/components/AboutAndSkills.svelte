@@ -28,6 +28,7 @@
             I'm passionate about AI applications and embedded systems, particularly in spacecraft, computing and automotive vehicles.
             
             <br><br>
+            [DO NOTE: WEBSITE IS A WIP IM ADDING NEW PROJECTS AND UPDATING MY EXPERIENCES :)]
             When I'm not immersed in schoolwork, you'll likely find me experimenting with new projects, 
             I enjoy doing fullstack web development, designing models for my 3D printer, or working on something exciting for a Hackathon. And if I'm not doing any of that, I'm probably at the gym or enjoying a good book :D
         </p>
