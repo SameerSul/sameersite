@@ -28,7 +28,8 @@
     "VLSI/FPGA Enthusiast",
     "Hackathon Enjoyer",
     "Full Stack Developer",
-    "Embedded Programmer"
+    "Embedded Programmer",
+    "Socratica",
   ];
 
   let currentTitleIndex = 0;
