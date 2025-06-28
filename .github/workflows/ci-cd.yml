@@ -26,6 +26,12 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
+    - name: Set lower case owner name
+      run: |
+        echo "OWNER_LC=${OWNER,,}" >>${GITHUB_ENV}
+      env:
+        OWNER: '${{ github.repository_owner }}'
+    
     - name: Set up Docker Buildx
       uses: docker/setup-buildx-action@v3
       
@@ -42,8 +48,8 @@ jobs:
         context: .
         push: true
         tags: |
-          ghcr.io/sameersul/sameersite:latest
-          ghcr.io/sameersul/sameersite:${{ github.sha }}
+          ghcr.io/${{ env.OWNER_LC }}/sameersite:latest
+          ghcr.io/${{ env.OWNER_LC }}/sameersite:${{ github.sha }}
 
   deploy:
     needs: test
