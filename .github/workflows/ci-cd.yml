@@ -17,8 +17,8 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build
-    # Add tests here when you have them
-    # - run: npm test
+
+    # Test Cases Go Here
 
   docker:
     needs: test
