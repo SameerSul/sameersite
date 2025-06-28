@@ -25,7 +25,7 @@
   ];
 
   let titles = [
-    "Huge Space Enthusiast",
+    "VLSI/FPGA Enthusiast",
     "Hackathon Enjoyer",
     "Full Stack Developer",
     "Embedded Programmer"
