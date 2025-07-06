@@ -27,24 +27,31 @@
 </script>
 
 <header
-  class={"sticky z-[10] top-0 duration-200 px-6 flex items-center justify-between border-b border-solid " +
+  class={"sticky z-[10] top-0 duration-200 w-full flex items-center justify-between border-b border-solid " +
       (y > 0
-          ? "py-4 bg-slate-950 border-violet-950 text-lg"
-          : "py-8 bg-transparent border-transparent text-2xl")}>
-  <h1 class="font-medium cursor-pointer" on:click={scrollToTop}>
-      <b class="font-bold poppins">Sameer Suleman</b>
-  </h1>
-  <div class="sm:flex items-center gap-6 hidden">
-      {#each tabs as tab, index}
-          <a
-              href={tab.link}
-              class="tab-button button-effect"
-              on:click|preventDefault={() => scrollToSection(tab.link.slice(1))}
-          >
-              <p>{tab.name}</p>
-          </a>
-      {/each}
+          ? "py-4 px-6 bg-slate-950/95 backdrop-blur-sm border-violet-950/50 text-lg"
+          : "py-8 px-8 bg-transparent border-transparent text-2xl")}>
+  
+  <!-- Left side - Logo/Name -->
+  <div class="flex-shrink-0">
+    <h1 class="font-medium cursor-pointer transition-all duration-300 hover:transform hover:scale-105" on:click={scrollToTop}>
+        <span class="font-bold poppins bg-gradient-to-r from-indigo-400 to-purple-600 bg-clip-text text-transparent">
+          Sameer Suleman
+        </span>
+    </h1>
   </div>
+
+  <!-- Right side - Navigation -->
+  <nav class="flex items-center gap-4">
+      {#each tabs as tab, index}
+          <button
+              class="modern-nav-button"
+              on:click={() => scrollToSection(tab.link.slice(1))}
+          >
+              <span class="nav-button-text">{tab.name}</span>
+          </button>
+      {/each}
+  </nav>
 </header>
 
 <style>
@@ -57,84 +64,128 @@
   cursor: none !important;
 }
 
-/* Hover effect for header items */
-a, button, h1 {
-  transition: transform 0.2s ease-in-out;
+/* Header styling */
+header {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
-a:hover, button:hover, h1:hover {
+/* Logo hover effect */
+h1 {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+h1:hover {
   transform: translateY(-2px);
 }
 
-/* Scaling the header size based on scroll */
-header {
-  transition: all 0.3s ease-in-out;
-}
-
-header.py-8 {
-  font-size: 1.5rem; /* Larger header for when y = 0 */
-}
-
-header.py-4 {
-  font-size: 1rem; /* Smaller header for scrolling state */
-}
-
-/* Responsive header buttons */
-.tab-button {
-  display: inline-flex;
+/* Modern navigation buttons matching your design scheme */
+.modern-nav-button {
+  display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 1rem;
-  background-color: transparent;
-  color: white;
-  font-size: 1.25rem;
-  border-radius: 9999px;
-  text-decoration: none;
-  transition: all 0.3s ease;
   position: relative;
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  transform: translateY(0);
   overflow: hidden;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  min-width: 100px;
 }
 
-.tab-button p {
-  margin: 0;
-  z-index: 1;
+.nav-button-text {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
 }
 
-.tab-button::before {
+.modern-nav-button::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #4f46e5; /* Indigo background for hover */
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
   opacity: 0;
   transition: opacity 0.3s ease;
-  z-index: 0;
+  z-index: 1;
 }
 
-.tab-button:hover::before {
+.modern-nav-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+}
+
+.modern-nav-button:hover::before {
   opacity: 1;
 }
 
-.tab-button:hover {
-  color: white;
+.modern-nav-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
 }
 
-/* Media query for smaller screens */
+.modern-nav-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+}
+
+/* Responsive design */
 @media (max-width: 768px) {
-  .tab-button {
-    font-size: 1rem;
-    padding: 0.25rem 0.75rem;
+  header {
+    padding: 1rem !important;
   }
-
-  header.py-8 {
-    font-size: 1.25rem; /* Reduce header size on small screens */
+  
+  .modern-nav-button {
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    min-width: 80px;
   }
-
-  header.py-4 {
-    font-size: 0.9rem; /* Reduce further on scroll */
+  
+  nav {
+    gap: 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
   }
 }
-</style>
+
+@media (max-width: 640px) {
+  .modern-nav-button {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    min-width: 70px;
+  }
+  
+  nav {
+    gap: 0.25rem;
+  }
+  
+  h1 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Small screens - stack navigation vertically if needed */
+@media (max-width: 480px) {
+  header {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 1rem !important;
+  }
+  
+  nav {
+    width: 100%;
+    justify-content: center;
+  }
+}</style>
