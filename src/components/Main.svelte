@@ -79,7 +79,7 @@
   function scrollToAbout() {
     const aboutSection = document.getElementById('about');
     if (aboutSection) {
-      const offset = 100; 
+      const offset = 40; // Reduced offset to fix interaction issue
       const elementPosition = aboutSection.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
       
@@ -115,58 +115,57 @@
   <div class="transition-opacity duration-1000"
        class:opacity-0={!showFullContent}
        class:opacity-100={showFullContent}>
-    <section id="introPage" class="grid grid-cols-1 lg:grid-cols-2 gap-10 py-8 sm:py-14">
+    <section id="introPage" class="grid grid-cols-1 lg:grid-cols-2 gap-6 py-4 sm:py-8 min-h-screen items-center -mt-16 sm:-mt-20 lg:-mt-24">
       <div class="flex flex-col lg:justify-center text-center lg:text-left gap-6 md:gap-8 lg:gap-10">
-        <h2 class="font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl">
-          <span class="relative inline-block group">
-            <span 
-              bind:this={gradientElement}
-              class="font-poppins text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600" 
-              class:animate-gradient-x={resetAnimation}
-            >
-              Sameer Suleman
+        <div class="title-container"> <!-- Fixed height container to prevent layout shift -->
+          <h2 class="font-semibold text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl">
+            <span class="relative inline-block">
+              <span 
+                bind:this={gradientElement}
+                class="font-poppins text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-600" 
+                class:animate-gradient-x={resetAnimation}
+              >
+                Sameer Suleman
+              </span>
             </span>
-            <span class="absolute -inset-1 bg-gradient-to-r from-indigo-400 to-purple-600 rounded-lg blur opacity-30 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></span>
-          </span>
-          <br><br>
-          <p class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl">That's me, I'm a...</p>
-          <br />
-          <div class="title-container">
-            <span class="poppins text-indigo-400 title-text">{currentTitle}</span>
-          </div>
-        </h2>
+            <br><br>
+            <span class="poppins text-indigo-400 title-text text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">{currentTitle}</span>
+          </h2>
+        </div>
     
         <button 
           on:click={scrollToAbout}
-          class="modern-button mx-auto lg:mr-auto lg:ml-0"
+          class="button-effect mx-auto lg:mr-auto lg:ml-0"
         >
-          <span class="button-text">Check Me Out &darr;</span>
+          Check Me Out &darr;
         </button>
       </div>
 
-      <div class="flex justify-center md:justify-start space-x-4">
-        <div class="relative shadow-2xl grid place-items-center">
-          <img src={"images/profile.png"} alt="Profile" class="object-cover z-[2] max-h-[70vh] w-96 h-96 rounded-full"   />
-        </div>  
-        
-        <div class="flex flex-col justify-center space-y-4 ml-4">
-          <a href="https://github.com/SameerSul" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-          </a>
-          <a href="https://linkedin.com/in/sameer-sul" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-          </a>
-          <a href="https://devpost.com/sameerjuin" target="_blank" rel="noopener noreferrer" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-          </a>
-          <a href="mailto:sameerjuin@gmail.com" class="social-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-          </a>
+      <div class="flex justify-center lg:justify-end items-center w-full">
+        <div class="flex items-center justify-between w-full max-w-4xl gap-4 ml-0 lg:ml-8"> <!-- Increased max width, reduced gap, added left margin -->
+          <div class="relative shadow-2xl grid place-items-center">
+            <img src={"images/profile.png"} alt="Profile" class="object-cover z-[2] max-h-[82vh] rounded-full w-88 h-88 sm:w-106 sm:h-106 lg:w-[29rem] lg:h-[29rem] xl:w-[31rem] xl:h-[31rem]" />
+          </div>  
+          
+          <div class="flex flex-col justify-center space-y-4 lg:space-y-5">
+            <a href="https://github.com/SameerSul" target="_blank" rel="noopener noreferrer" class="social-icon bg-slate-700 hover:bg-slate-600 text-white rounded-full p-3 lg:p-4 transition-all duration-300 w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 flex items-center justify-center group hover:scale-110 hover:shadow-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lg:w-7 lg:h-7 xl:w-8 xl:h-8 group-hover:scale-110 transition-transform duration-300"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            </a>
+            <a href="https://linkedin.com/in/sameer-sul" target="_blank" rel="noopener noreferrer" class="social-icon bg-slate-700 hover:bg-slate-600 text-white rounded-full p-3 lg:p-4 transition-all duration-300 w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 flex items-center justify-center group hover:scale-110 hover:shadow-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lg:w-7 lg:h-7 xl:w-8 xl:h-8 group-hover:scale-110 transition-transform duration-300"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            </a>
+            <a href="https://devpost.com/sameerjuin" target="_blank" rel="noopener noreferrer" class="social-icon bg-slate-700 hover:bg-slate-600 text-white rounded-full p-3 lg:p-4 transition-all duration-300 w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 flex items-center justify-center group hover:scale-110 hover:shadow-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lg:w-7 lg:h-7 xl:w-8 xl:h-8 group-hover:scale-110 transition-transform duration-300"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            </a>
+            <a href="mailto:sameerjuin@gmail.com" class="social-icon bg-slate-700 hover:bg-slate-600 text-white rounded-full p-3 lg:p-4 transition-all duration-300 w-12 h-12 lg:w-14 lg:h-14 xl:w-16 xl:h-16 flex items-center justify-center group hover:scale-110 hover:shadow-2xl">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lg:w-7 lg:h-7 xl:w-8 xl:h-8 group-hover:scale-110 transition-transform duration-300"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            </a>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="about" class="py-8 sm:py-14">
+    <section id="about" class="py-8 sm:py-14 scroll-margin-top">
       <AboutAndSkills />
     </section>
 
@@ -198,6 +197,71 @@
     }
   }
 
+  /* Fixed height container to prevent layout shift */
+  .title-container {
+    height: auto;
+    min-height: 380px; /* Reduced from 450px */
+  }
+
+  .title-text {
+    display: inline-block;
+    min-height: 1.2em; /* Prevents height changes */
+  }
+
+  /* Button styles matching AboutAndSkills.svelte */
+  .button-effect {
+    display: inline-block;
+    position: relative;
+    padding: 1.25rem 2.5rem;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    font-size: 1.375rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+    max-width: 350px;
+    transform: translateY(0);
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .button-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+  }
+
+  .button-effect:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
+  }
+
+  .button-effect:hover::before {
+    opacity: 1;
+  }
+
+  .button-effect:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+  }
+
+  .button-effect:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+  }
+
   :global(body) {
     cursor: none;
   }
@@ -225,184 +289,38 @@
     cursor: none;
   }
 
-  #about:before {
-    content: "";
-    display: block;
-    height: 100px; /* height of fixed header */
-    margin-top: -100px; /* negative height of fixed header */
-    visibility: hidden;
+  /* Better scroll target positioning */
+  .scroll-margin-top {
+    scroll-margin-top: 40px;
   }
 
-  /* Fixed height title container to prevent layout shifts */
-  .title-container {
-    height: 5rem; /* Fixed height for large screens */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    overflow: hidden; /* Prevent overflow from affecting layout */
-  }
-
-  .title-text {
-    display: block;
-    line-height: 1.2;
-    white-space: nowrap; /* Prevent wrapping */
-    overflow: hidden;
-    text-overflow: ellipsis; /* Add ellipsis if text is too long */
-  }
-
-  @media (min-width: 1024px) {
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
     .title-container {
-      justify-content: flex-start;
-      text-align: left;
+      min-height: 340px; /* Reduced from 400px */
+    }
+    
+    .button-effect {
+      padding: 1.125rem 2.25rem;
+      font-size: 1.25rem;
     }
   }
 
   @media (max-width: 768px) {
     .title-container {
-      height: 3.5rem; /* Smaller fixed height for mobile */
+      min-height: 300px; /* Reduced from 350px */
     }
     
-    .title-text {
-      font-size: 0.9em; /* Slightly smaller text on mobile */
+    .button-effect {
+      padding: 1rem 2rem;
+      font-size: 1.125rem;
     }
   }
 
   @media (max-width: 640px) {
     .title-container {
-      height: 3rem; /* Even smaller for very small screens */
-    }
-    
-    .title-text {
-      font-size: 0.8em;
+      min-height: 260px; /* Reduced from 300px */
     }
   }
-
-  /* Modern button styling to match the previous section */
-  .modern-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    padding: 1rem 2rem;
-    border-radius: 12px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 600;
-    text-align: center;
-    text-decoration: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
-    width: auto;
-    max-width: 280px;
-    transform: translateY(0);
-    overflow: hidden;
-  }
-
-  .modern-button .button-text {
-    position: relative;
-    z-index: 2;
-    pointer-events: none;
-  }
-
-  .modern-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 1;
-  }
-
-  .modern-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.6);
-  }
-
-  .modern-button:hover::before {
-    opacity: 1;
-  }
-
-  .modern-button:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
-  }
-
-  .modern-button:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
-  }
-
-  /* Enhanced social icons */
-  .social-icon {
-    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
-    color: white;
-    border-radius: 50%;
-    padding: 0.75rem;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    width: 3rem;
-    height: 3rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(64, 116, 139, 0.3);
-    transform: translateY(0);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .social-icon::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    z-index: 0;
-  }
-
-  .social-icon svg {
-    position: relative;
-    z-index: 1;
-  }
-
-  .social-icon:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-  }
-
-  .social-icon:hover::before {
-    opacity: 1;
-  }
-
-  .social-icon:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
-  }
-
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .modern-button {
-      padding: 0.875rem 1.75rem;
-      font-size: 1.125rem;
-      max-width: 100%;
-    }
-    
-    .social-icon {
-      width: 2.5rem;
-      height: 2.5rem;
-      padding: 0.625rem;
-    }
-  }
+  
 </style>
