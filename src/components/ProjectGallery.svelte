@@ -36,7 +36,7 @@
     {
       name: "SurroundSense",
       description: "LiDAR Spatial Mapping System using ToF sensor, utilizing I2C sensor readings with an MSP432E401Y MCU, transmitted to Python Open3D via UART for real-time visualization.",
-      tags: ["Hardware", "Hybrid"],
+      tags: ["Hardware", "Software"],
       image: "/images/scanComparison.png",
       color: "from-green-400 to-teal-500",
       bgColor: "from-green-500/10 to-teal-500/10",
@@ -126,7 +126,7 @@
     // {
     //   name: "Arduino Nano Powered Gameboy",
     //   description: "Designed a Gameboy prototype, developed Schematic and PCB completely from scratch, and programmed a time and memory efficient game in C++",
-    //   tags: ["Hardware", "Software", "Hybrid"],
+    //   tags: ["Hardware", "Software"],
     //   image: "/images/ArduinoNanoPCB.png",
     //   color: "from-emerald-400 to-green-500",
     //   bgColor: "from-emerald-500/10 to-green-500/10",
@@ -176,7 +176,7 @@
     return () => clearTimeout(timer);
   });
 
-  $: allTags = ["Hardware", "Software", "Hybrid", "AI"];
+  $: allTags = ["Hardware", "Software", "AI"];
 
   $: filteredProjects = selectedTags.size === 0
     ? projects
@@ -219,7 +219,6 @@
     const colors = {
       "Hardware": "from-amber-400 to-orange-500",
       "Software": "from-blue-400 to-cyan-500",
-      "Hybrid": "from-purple-400 to-pink-500",
       "AI": "from-emerald-400 to-green-500"
     };
     return colors[tag] || "from-gray-400 to-gray-500";
@@ -240,7 +239,7 @@
     <div class="mb-12 flex flex-wrap justify-center gap-4">
       {#each allTags as tag}
         <button
-          class={`px-6 py-3 rounded-full font-medium transition-all duration-300 transform hover:scale-105 ${
+          class={`px-6 py-3 rounded-full font-medium transition-all duration-150 transform hover:scale-105 ${
             selectedTags.has(tag) 
               ? `bg-gradient-to-r ${getTagColor(tag)} text-white shadow-lg shadow-${tag.toLowerCase()}-500/25` 
               : 'bg-slate-700/50 text-gray-300 hover:bg-slate-600/50 border border-slate-600/50'
@@ -251,7 +250,7 @@
         </button>
       {/each}
       <button
-        class="px-6 py-3 rounded-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-medium transition-all duration-300 transform hover:scale-105 shadow-lg shadow-red-500/25"
+        class="px-6 py-3 rounded-full bg-gradient-to-r from-red-500 to-pink-500 hover:from-red-600 hover:to-pink-600 text-white font-medium transition-all duration-150 transform hover:scale-105 shadow-lg shadow-red-500/25"
         on:click={clearTags}
       >
         Clear All
@@ -264,17 +263,17 @@
         {#if visible}
           <div
             class="group relative cursor-pointer"
-            in:fly={{ y: 50, duration: 600, delay: index * 100 }}
-            out:fade={{ duration: 300 }}
+            in:fly={{ y: 30, duration: 400, delay: index * 80 }}
+            out:fly={{ y: -20, duration: 250, delay: Math.max(0, (filteredProjects.length - index - 1) * 40) }}
             on:mouseenter={() => hoveredCard = index}
             on:mouseleave={() => hoveredCard = null}
             on:click={() => handleCardClick(project)}
           >
             <!-- Glow Effect -->
-            <div class={`absolute inset-0 bg-gradient-to-r ${project.color} rounded-2xl blur-sm opacity-0 group-hover:opacity-20 transition-opacity duration-300`}></div>
+            <div class={`absolute inset-0 bg-gradient-to-r ${project.color} rounded-2xl blur-sm opacity-0 group-hover:opacity-20 transition-opacity duration-150`}></div>
             
             <!-- Card Container -->
-            <div class={`relative bg-gradient-to-br ${project.bgColor} backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-300 group-hover:scale-105 group-hover:shadow-3xl h-full flex flex-col`}>
+            <div class={`relative bg-gradient-to-br ${project.bgColor} backdrop-blur-sm border border-slate-700/50 rounded-2xl overflow-hidden shadow-2xl transform transition-all duration-150 group-hover:scale-105 group-hover:shadow-3xl h-full flex flex-col`}>
               
               <!-- Achievement Badge -->
               <div class="absolute top-4 right-4 z-10">
@@ -288,7 +287,7 @@
                 <img 
                   src={project.image} 
                   alt={project.name} 
-                  class="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                  class="w-full h-full object-cover transition-transform duration-150 group-hover:scale-110"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
@@ -297,10 +296,10 @@
               <div class="p-6 flex-grow flex flex-col">
                 <!-- Project Icon and Title -->
                 <div class="flex items-center space-x-3 mb-4">
-                  <div class={`w-12 h-12 rounded-xl bg-gradient-to-r ${project.color} flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform duration-300`}>
+                  <div class={`w-12 h-12 rounded-xl bg-gradient-to-r ${project.color} flex items-center justify-center text-white text-xl group-hover:scale-110 transition-transform duration-150`}>
                     {project.icon}
                   </div>
-                  <h3 class="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-300">
+                  <h3 class="text-xl font-bold text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:bg-clip-text group-hover:from-blue-400 group-hover:to-purple-400 transition-all duration-150">
                     {project.name}
                   </h3>
                 </div>
@@ -325,7 +324,7 @@
                     <a
                       href={getDocumentationLink(project)}
                       target="_blank"
-                      class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg transition-colors duration-200 text-gray-300 hover:text-white group/link"
+                      class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg transition-colors duration-150 text-gray-300 hover:text-white group/link"
                       on:click|stopPropagation
                     >
                       <svg class="w-4 h-4 group-hover/link:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -340,7 +339,7 @@
                     <a
                       href={project.links.github}
                       target="_blank"
-                      class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg transition-colors duration-200 text-gray-300 hover:text-white group/link"
+                      class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg transition-colors duration-150 text-gray-300 hover:text-white group/link"
                       on:click|stopPropagation
                     >
                       <svg class="w-4 h-4 group-hover/link:scale-110 transition-transform" fill="currentColor" viewBox="0 0 24 24">
@@ -353,7 +352,7 @@
                     <a
                       href={project.links.video}
                       target="_blank"
-                      class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg transition-colors duration-200 text-gray-300 hover:text-white group/link"
+                      class="inline-flex items-center space-x-2 px-4 py-2 bg-slate-700/50 hover:bg-slate-600/50 rounded-lg transition-colors duration-150 text-gray-300 hover:text-white group/link"
                       on:click|stopPropagation
                     >
                       <svg class="w-4 h-4 group-hover/link:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -371,7 +370,7 @@
     </div>
 
     <!-- Bottom Statistics -->
-    <div class="mt-20 grid grid-cols-1 md:grid-cols-4 gap-6">
+    <div class="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
       <div class="text-center p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50">
         <div class="text-3xl font-bold text-blue-400 mb-2">{projects.length}</div>
         <div class="text-gray-300">Total Projects</div>
@@ -383,10 +382,6 @@
       <div class="text-center p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50">
         <div class="text-3xl font-bold text-green-400 mb-2">{projects.filter(p => p.tags.includes('Hardware')).length}</div>
         <div class="text-gray-300">Hardware Projects</div>
-      </div>
-      <div class="text-center p-6 bg-slate-800/50 rounded-2xl border border-slate-700/50">
-        <div class="text-3xl font-bold text-cyan-400 mb-2">{projects.filter(p => p.tags.includes('Hybrid')).length}</div>
-        <div class="text-gray-300">Hybrid Projects</div>
       </div>
     </div>
   </div>

@@ -3,8 +3,22 @@
   import { onMount } from 'svelte';
 
   const experiences = [
+        {
+      role: "SOC Physical Design Engineering Intern",
+      company: "Advanced Micro Devices",
+      date: "May 2025 - Present",
+      description: "Developing more efficient workflows for future MI chip series tapeout, and working on timing path optimization for Non-SI signals.",
+      color: "from-red-400 to-pink-500",
+      bgColor: "from-red-500/10 to-pink-500/10",
+      icon: "⚡",
+      status: "Current",
+      links: {
+        website: "https://www.amd.com/en/blogs/2025/amd-instinct-mi350-series-and-beyond-accelerating-the-future-of-ai-and-hpc.html#:~:text=AMD%20launched%20the%20AMD%20Instinct,performance%20improvement%20over%20ROCm%206.0",
+      },
+      skills: ["Physical Design", "Timing Optimization", "SOC Design", "Chip Architecture"]
+    },
     {
-      role: "Firmware Specialist",
+      role: "Firmware Engineer",
       company: "McMaster Interdisciplinary Satellite Team",
       date: "Aug 2024 - Present",
       description: "Developing FPGA-based systems for PRESET satellite's magnetometer, utilizing AMD Vivado to design custom IP core and Vitis for hardware-software co-simulation, programming FPGA using C.",
@@ -18,49 +32,35 @@
       },
       skills: ["FPGA", "AMD Vivado", "Vitis", "C Programming", "Hardware Design"]
     },
-    {
-      role: "Lead Software Engineer",
-      company: "Brainforge AI",
-      date: "Jul 2024 - Present",
-      description: "Architected and developed an innovative educational game using Unity, integrating Google's Gemini AI model. Led full-stack development efforts, AI code implementation, and Unity game development.",
-      color: "from-purple-400 to-indigo-500",
-      bgColor: "from-purple-500/10 to-indigo-500/10",
-      icon: "💻",
-      status: "Current",
-      links: {
-        website: "#",
-        github: "https://github.com/BrainForgeAI",
-        video: "#"
-      },
-      skills: ["Unity", "AI Integration", "Full-Stack", "Game Development", "Leadership"]
-    },
-    {
-      role: "SOC Physical Design Engineering Intern",
-      company: "Advanced Micro Devices",
-      date: "May 2025 - Present",
-      description: "Developing more efficient workflows for future MI chip series tapeout, and working on timing path optimization for Non-SI signals.",
-      color: "from-red-400 to-pink-500",
-      bgColor: "from-red-500/10 to-pink-500/10",
-      icon: "⚡",
-      status: "Current",
-      links: {
-        website: "https://www.eng.mcmaster.ca/community/about-us/",
-      },
-      skills: ["Physical Design", "Timing Optimization", "SOC Design", "Chip Architecture"]
-    },
+    // {
+    //   role: "Lead Software Engineer",
+    //   company: "Brainforge AI",
+    //   date: "Jul 2024 - Dec 2024",
+    //   description: "Architected and developed an innovative educational game using Unity, integrating Google's Gemini AI model. Led full-stack development efforts, AI code implementation, and Unity game development.",
+    //   color: "from-purple-400 to-indigo-500",
+    //   bgColor: "from-purple-500/10 to-indigo-500/10",
+    //   icon: "💻",
+    //   status: "Current",
+    //   links: {
+    //     website: "#",
+    //     github: "#",
+    //     video: "#"
+    //   },
+    //   skills: ["Unity", "AI Integration", "Full-Stack", "Game Development", "Leadership"]
+    // },
     {
       role: "Software Engineering Intern",
       company: "Wewoo",
       date: "May 2024 - Jul 2024",
-      description: "Engineered a robust Authorization and Rider Order Service for a Carpooling Application using NestJS. Developed GraphQL resolvers and implemented a real-time notification system using WebSocket API.",
+      description: "Led a cross-functional team of 4 developers to design and implement real-time ride matching algorithms using WebSocket connections and MongoDB geospatial queries, reducing average wait times by 35%.",
       color: "from-blue-400 to-cyan-500",
       bgColor: "from-blue-500/10 to-cyan-500/10",
       icon: "🏢",
       status: "Completed",
       links: {
-        website: "https://www.linkedin.com/company/wewooo/mycompany/",
+        website: "",
       },
-      skills: ["NestJS", "GraphQL", "WebSocket", "Authorization", "Backend Development"]
+      skills: ["NestJS", "GraphQL", "WebSockets","MongoDB"]
     }
   ];
 

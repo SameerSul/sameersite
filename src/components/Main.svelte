@@ -143,7 +143,7 @@
 
       <div class="flex justify-center lg:justify-end items-center w-full">
         <div class="flex items-center justify-between w-full max-w-4xl gap-4 ml-0 lg:ml-8"> <!-- Increased max width, reduced gap, added left margin -->
-          <div class="relative shadow-2xl grid place-items-center">
+          <div class="relative shadow-2xl grid place-items-center profile-image-container">
             <img src={"images/profile.png"} alt="Profile" class="object-cover z-[2] max-h-[82vh] rounded-full w-88 h-88 sm:w-106 sm:h-106 lg:w-[29rem] lg:h-[29rem] xl:w-[31rem] xl:h-[31rem]" />
           </div>  
           
@@ -206,6 +206,11 @@
   .title-text {
     display: inline-block;
     min-height: 1.2em; /* Prevents height changes */
+  }
+
+  /* Profile image positioning - moved 50px to the left */
+  .profile-image-container {
+    margin-left: -60px;
   }
 
   /* Button styles matching AboutAndSkills.svelte */
@@ -304,6 +309,11 @@
       padding: 1.125rem 2.25rem;
       font-size: 1.25rem;
     }
+    
+    /* Reset margin on smaller screens to prevent overflow */
+    .profile-image-container {
+      margin-left: -25px;
+    }
   }
 
   @media (max-width: 768px) {
@@ -314,6 +324,11 @@
     .button-effect {
       padding: 1rem 2rem;
       font-size: 1.125rem;
+    }
+    
+    /* Reset margin on mobile */
+    .profile-image-container {
+      margin-left: 0;
     }
   }
 
