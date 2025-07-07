@@ -77,14 +77,14 @@
   }
 </script>
 
-<div class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8">
+<!-- Added ID "experience" to the main container -->
+<div id="experience" class="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-8">
   <div class="max-w-7xl mx-auto">
     <!-- Header -->
     <div class="text-center mb-16">
       <h1 class="text-5xl md:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent mb-6">
         Professional Experience
       </h1>
-
     </div>
 
     <!-- Timeline -->

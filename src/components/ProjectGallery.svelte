@@ -93,66 +93,66 @@
         video: "https://youtube.com/dac"
       }
     },
-    {
-      name: "MOSFET Based XOR Gate",
-      description: "Developed a MOSFET-based XOR Gate using CMOS technology, focusing on frequency control with applications in communication systems.",
-      tags: ["Hardware"],
-      image: "/images/2EI4Project4(2)Website.png",
-      color: "from-violet-400 to-purple-500",
-      bgColor: "from-violet-500/10 to-purple-500/10",
-      icon: "⚡",
-      achievement: "CMOS Technology",
-      links: {
-        devpost: "https://drive.google.com/file/d/1TDPGne9Zpnw2rhvX_AmB4-t-ADJKPicE/view?usp=sharing",
-        github: "https://github.com/xor-gate",
-        video: "https://youtube.com/xor-gate"
-      }
-    },
-    {
-      name: "AC-DC Converter",
-      description: "Designed an AC to DC converter circuit for power supply systems, gaining experience in optimizing power conversion circuits.",
-      tags: ["Hardware"],
-      image: "/images/2EI4Project1Website.png",
-      color: "from-rose-400 to-pink-500",
-      bgColor: "from-rose-500/10 to-pink-500/10",
-      icon: "🔋",
-      achievement: "Power Systems Design",
-      links: {
-        devpost: "https://drive.google.com/file/d/1argB_-xUHWn2UaJjAeLUEVMEjMqW7k7k/view?usp=sharing",
-        github: "https://github.com/acdc-converter",
-        video: "https://youtube.com/acdc-converter"
-      }
-    },
-    {
-      name: "Arduino Nano Powered Gameboy",
-      description: "Designed a Gameboy prototype, developed Schematic and PCB completely from scratch, and programmed a time and memory efficient game in C++",
-      tags: ["Hardware", "Software", "Hybrid"],
-      image: "/images/ArduinoNanoPCB.png",
-      color: "from-emerald-400 to-green-500",
-      bgColor: "from-emerald-500/10 to-green-500/10",
-      icon: "🕹️",
-      achievement: "Full System Design",
-      links: {
-        devpost: "https://devpost.com/gameboy",
-        github: "https://github.com/gameboy",
-        video: "https://youtube.com/gameboy"
-      }
-    },
-    {
-      name: "Square Wave Generator",
-      description: "Engineered a custom Square Wave Generator utilizing a 555 Timer IC, complete with 10K and 100K potentiometers for adjustable frequency control. This project deepened my practical understanding of analog circuit design and signal processing from theoretical coursework.",
-      tags: ["Hardware"],
-      image: "/images/SquareWaveGenPCB.png",
-      color: "from-cyan-400 to-blue-500",
-      bgColor: "from-cyan-500/10 to-blue-500/10",
-      icon: "📊",
-      achievement: "Signal Processing",
-      links: {
-        devpost: "https://devpost.com/square-wave",
-        github: "https://github.com/square-wave",
-        video: "https://youtube.com/square-wave"
-      }
-    }
+    // {
+    //   name: "MOSFET Based XOR Gate",
+    //   description: "Developed a MOSFET-based XOR Gate using CMOS technology, focusing on frequency control with applications in communication systems.",
+    //   tags: ["Hardware"],
+    //   image: "/images/2EI4Project4(2)Website.png",
+    //   color: "from-violet-400 to-purple-500",
+    //   bgColor: "from-violet-500/10 to-purple-500/10",
+    //   icon: "⚡",
+    //   achievement: "CMOS Technology",
+    //   links: {
+    //     devpost: "https://drive.google.com/file/d/1TDPGne9Zpnw2rhvX_AmB4-t-ADJKPicE/view?usp=sharing",
+    //     github: "https://github.com/xor-gate",
+    //     video: "https://youtube.com/xor-gate"
+    //   }
+    // },
+    // {
+    //   name: "AC-DC Converter",
+    //   description: "Designed an AC to DC converter circuit for power supply systems, gaining experience in optimizing power conversion circuits.",
+    //   tags: ["Hardware"],
+    //   image: "/images/2EI4Project1Website.png",
+    //   color: "from-rose-400 to-pink-500",
+    //   bgColor: "from-rose-500/10 to-pink-500/10",
+    //   icon: "🔋",
+    //   achievement: "Power Systems Design",
+    //   links: {
+    //     devpost: "https://drive.google.com/file/d/1argB_-xUHWn2UaJjAeLUEVMEjMqW7k7k/view?usp=sharing",
+    //     github: "https://github.com/acdc-converter",
+    //     video: "https://youtube.com/acdc-converter"
+    //   }
+    // },
+    // {
+    //   name: "Arduino Nano Powered Gameboy",
+    //   description: "Designed a Gameboy prototype, developed Schematic and PCB completely from scratch, and programmed a time and memory efficient game in C++",
+    //   tags: ["Hardware", "Software", "Hybrid"],
+    //   image: "/images/ArduinoNanoPCB.png",
+    //   color: "from-emerald-400 to-green-500",
+    //   bgColor: "from-emerald-500/10 to-green-500/10",
+    //   icon: "🕹️",
+    //   achievement: "Full System Design",
+    //   links: {
+    //     devpost: "https://devpost.com/gameboy",
+    //     github: "https://github.com/gameboy",
+    //     video: "https://youtube.com/gameboy"
+    //   }
+    // },
+    // {
+    //   name: "Square Wave Generator",
+    //   description: "Engineered a custom Square Wave Generator utilizing a 555 Timer IC, complete with 10K and 100K potentiometers for adjustable frequency control. This project deepened my practical understanding of analog circuit design and signal processing from theoretical coursework.",
+    //   tags: ["Hardware"],
+    //   image: "/images/SquareWaveGenPCB.png",
+    //   color: "from-cyan-400 to-blue-500",
+    //   bgColor: "from-cyan-500/10 to-blue-500/10",
+    //   icon: "📊",
+    //   achievement: "Signal Processing",
+    //   links: {
+    //     devpost: "https://devpost.com/square-wave",
+    //     github: "https://github.com/square-wave",
+    //     video: "https://youtube.com/square-wave"
+    //   }
+    // }
   ];
 
   function shuffleArray(array) {
