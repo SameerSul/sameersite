@@ -1,7 +1,31 @@
 <script>
   import { onMount } from 'svelte';
 
-  // --- Data from Resume ---
+  // --- Theme Logic (Your original working method) ---
+  let isDark = true;
+  let pageLoaded = false;
+  let y = 0;
+  let mX = 0, mY = 0;
+  let cursorHover = false;
+
+  const signatureBlue = "#71a3c1";
+
+  function toggleTheme() {
+    isDark = !isDark;
+    const bgColor = isDark ? "#000000" : "#ffffff";
+    // This forces the absolute top-level of the browser to change
+    document.documentElement.style.backgroundColor = bgColor;
+    document.body.style.backgroundColor = bgColor;
+  }
+
+  onMount(() => {
+    // Force initial background
+    document.documentElement.style.backgroundColor = "#000000";
+    document.body.style.backgroundColor = "#000000";
+    pageLoaded = true;
+    window.addEventListener('mousemove', (e) => { mX = e.clientX; mY = e.clientY; });
+  });
+
   const experience = [
     {
       company: "Advanced Micro Devices (AMD)",
@@ -9,9 +33,9 @@
       period: "May 2025 – Jan 2026",
       points: [
         "Designed master tile on Fusion Compiler and closed timing for interposer die on Data Center GPU.",
-        "Integrated Python scripts into chip design flow to automate Synopsys PrimeTime STA data extraction.",
-        "Developed LangChain LLM agents to automate PD tasks, reducing timing violation resolution time by 40%.",
-        "Architected parallelized Python programs for PrimeTime report processing, reducing memory overhead by 95%."
+        "Integrated Python scripts to automate Synopsys PrimeTime STA data extraction.",
+        "Developed LangChain LLM agents reducing timing violation resolution by 40%.",
+        "Architected parallelized Python programs reducing memory overhead by 95%."
       ]
     },
     {
@@ -19,213 +43,177 @@
       role: "Research Assistant",
       period: "Sep 2025 – Dec 2025",
       points: [
-        "Designed calibration-free BMI decoder using Banditron RL with adaptive channel masking.",
-        "Achieved 96% accuracy using only 3 MACs/inference at sub-mW power levels."
-      ]
-    },
-    {
-      company: "McMaster Interdisciplinary Satellite Team",
-      role: "Firmware Engineer",
-      period: "Aug 2024 – Present",
-      points: [
-        "Programmed ZedBoard FPGA using C++ & FreeRTOS for multi-threaded satellite tasks.",
-        "Designed QSPI Firmware drivers in C to interface data acquisition from sensors to memory."
+        "Designed calibration-free BMI decoder using Banditron RL.",
+        "Achieved 96% accuracy using only 3 MACs/inference."
       ]
     }
   ];
-
-  const projects = [
-    { 
-      name: "Nora", 
-      tags: ["Python", "LangChain", "Fusion Compiler"], 
-      desc: "AI Agent for Physical Design Automation. Analyzes PrimeTime reports to suggest optimal ECO fixes and auto-generate placement commands." 
-    },
-    { 
-      name: "Hardware JPEG Decompressor", 
-      tags: ["Verilog", "VHDL", "FPGA"], 
-      desc: "Digital circuits for Dequantization, IDCT, and Colorspace Conversion to upsample image data for VGA display." 
-    },
-    { 
-      name: "VisuAI", 
-      tags: ["AI", "Web", "GenAI"], 
-      desc: "Audio-to-comic AI generator with LLM-driven storytelling and concept visualization." 
-    }
-  ];
-
-  const skills = {
-    "Languages": ["C", "C++", "Python", "Perl", "TCL", "SystemVerilog", "MATLAB"],
-    "Design": ["ASIC", "RTL", "VLSI", "Digital Logic", "Physical Design Flow"],
-    "Tools": ["PrimeTime", "Fusion Compiler", "ICC2", "Vivado", "Quartus", "Git"]
-  };
-  
-  let y = 0;
-  let isDark = true;
-  let pageLoaded = false;
-  let mX = 0;
-  let mY = 0;
-  let cursorHover = false;
-
-  function toggleTheme() {
-    isDark = !isDark;
-    const color = isDark ? "#000000" : "#ffffff";
-    document.documentElement.style.backgroundColor = color;
-    document.body.style.backgroundColor = color;
-  }
-
-  onMount(() => {
-    document.documentElement.style.backgroundColor = "#000000";
-    document.body.style.backgroundColor = "#000000";
-    pageLoaded = true;
-    window.addEventListener('mousemove', (e) => { mX = e.clientX; mY = e.clientY; });
-  });
 </script>
 
 <svelte:window bind:scrollY={y} />
 
-<div 
-  class="custom-cursor" 
-  style="left: {mX}px; top: {mY}px;"
-  class:hovering={cursorHover}>
-</div>
+<div class="custom-cursor" style="left: {mX}px; top: {mY}px;" class:hovering={cursorHover}></div>
 
-<main class="min-h-screen transition-colors duration-500" class:bg-black={isDark} class:bg-white={!isDark}>
+<div class="centered-layout" class:light-mode={!isDark}>
   
-  <header 
-    class="fixed top-0 w-full z-[100] transition-all duration-300 border-b"
-    class:border-transparent={y < 20}
-    class:border-zinc-900={isDark && y >= 20}
-    class:border-zinc-100={!isDark && y >= 20}
-    style="background-color: {isDark ? 'rgba(0,0,0,0.95)' : 'rgba(255,255,255,0.95)'};"
-  >
-    <div class="max-w-7xl mx-auto px-8 py-6 flex items-center justify-start gap-8">
-        <button 
-          on:click={toggleTheme}
-          on:mouseenter={() => cursorHover = true}
-          on:mouseleave={() => cursorHover = false}
-          class="theme-btn flex items-center justify-center shrink-0"
-        >
-          {#if isDark}
-            <i class="fa-solid fa-sun"></i>
-          {:else}
-            <i class="fa-solid fa-moon"></i>
-          {/if}
-        </button>
-
-        <h1 class="text-4xl font-black tracking-tighter shrink-0" style:color="#71a3c1">
-          Sameer Suleman
-        </h1>
+  <header class="header" class:scrolled={y > 20}>
+    <div class="header-inner">
+      <h1 class="brand-name">Sameer Suleman</h1>
+      
+      <button class="theme-btn" on:click={toggleTheme} on:mouseenter={() => cursorHover = true} on:mouseleave={() => cursorHover = false}>
+        {#if isDark}
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <circle cx="12" cy="12" r="5" fill="white" />
+            <g stroke="white" stroke-width="2">
+              <line x1="12" y1="1" x2="12" y2="3" /><line x1="12" y1="21" x2="12" y2="23" />
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" /><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+              <line x1="1" y1="12" x2="3" y2="12" /><line x1="21" y1="12" x2="23" y2="12" />
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" /><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+            </g>
+          </svg>
+        {:else}
+          <svg viewBox="0 0 24 24" width="40" height="40">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="black" />
+          </svg>
+        {/if}
+      </button>
     </div>
   </header>
 
-  <div 
-    class="max-w-4xl mx-auto px-8 pt-48 pb-32 transition-opacity duration-1000" 
-    class:opacity-0={!pageLoaded} 
-    class:opacity-100={pageLoaded}
-  >
-    
-    <section class="mb-32">
-      <p class="text-3xl font-bold leading-tight mb-8" style:color="#71a3c1">
-        Computer Engineering at McMaster & NTU Singapore. <br/>Physical Design Intern at AMD.
-      </p>
-      <p class="text-xl opacity-70 leading-relaxed max-w-2xl" style:color="#71a3c1">
-        Specializing in hardware-efficient AI, VLSI design, and SoC physical automation.
-      </p>
+  <main class="content-container">
+    <section class="hero">
+      <h2>computer engineering @ mcmaster & ntu singapore.<br>physical design intern @ amd.</h2>
     </section>
 
-    <section class="mb-32">
-      <h3 class="label mb-12">Professional Experience</h3>
-      <div class="space-y-20">
-        {#each experience as job}
-          <div>
-            <div class="flex flex-col md:flex-row justify-between items-baseline mb-4">
-              <h4 class="font-bold text-2xl" style:color="#71a3c1">{job.company}</h4>
-              <span class="text-sm uppercase tracking-widest opacity-50 font-mono" style:color="#71a3c1">{job.period}</span>
-            </div>
-            <p class="text-lg font-medium mb-6 opacity-90" style:color="#71a3c1">{job.role}</p>
-            <ul class="space-y-4">
-              {#each job.points as point}
-                <li class="text-lg leading-relaxed opacity-70 flex gap-4" style:color="#71a3c1">
-                  <span class="opacity-30">•</span> {point}
-                </li>
-              {/each}
-            </ul>
+    <section class="experience">
+      <p class="label">01 / experience</p>
+      {#each experience as job}
+        <div class="job">
+          <div class="job-row">
+            <h3>{job.company}</h3>
+            <span class="date">{job.period}</span>
           </div>
-        {/each}
-      </div>
+          <p class="role">{job.role}</p>
+          <ul class="single-bullet-list">
+            {#each job.points as point}
+              <li>{point}</li>
+            {/each}
+          </ul>
+        </div>
+      {/each}
     </section>
 
-    <section class="mb-32">
-      <h3 class="label mb-12">Technical Projects</h3>
-      <div class="grid grid-cols-1 gap-8">
-        {#each projects as project}
-          <div class="p-8 border rounded-sm transition-all" 
-               class:border-zinc-900={isDark} class:border-zinc-100={!isDark}
-               style:border-left="4px solid #71a3c1">
-            <div class="flex justify-between items-start mb-4">
-              <h4 class="font-bold text-2xl" style:color="#71a3c1">{project.name}</h4>
-              <div class="flex gap-3">
-                {#each project.tags as tag}
-                  <span class="text-xs uppercase font-black tracking-tighter opacity-40" style:color="#71a3c1">{tag}</span>
-                {/each}
-              </div>
-            </div>
-            <p class="text-lg leading-relaxed opacity-70" style:color="#71a3c1">{project.desc}</p>
-          </div>
-        {/each}
-      </div>
-    </section>
-
-    <footer class="pt-16 border-t border-zinc-900/10 text-center">
-        <a href="mailto:sulems6@mcmaster.ca" class="text-sm uppercase tracking-widest hover:opacity-100 opacity-50 transition-opacity" style:color="#71a3c1">Get in Touch</a>
+    <footer class="footer">
+      <a href="mailto:sulems6@mcmaster.ca">Email</a>
+      <a href="https://linkedin.com/in/Sameer-Sul" target="_blank">LinkedIn</a>
     </footer>
-
-  </div>
-</main>
+  </main>
+</div>
 
 <style>
+  /* FORCING GLOBAL BACKGROUND (Fixes the "sides" issue) */
   :global(html), :global(body) {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-    min-height: 100vh;
+    margin: 0; padding: 0;
+    transition: background-color 0.4s ease;
     cursor: none !important;
+    font-family: 'Inter', sans-serif;
   }
 
-  .custom-cursor {
-    position: fixed;
-    width: 12px;
-    height: 12px;
-    background-color: #71a3c1;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease-out;
+  /* Centering the Entire Page */
+  .centered-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    color: #71a3c1; /* Default Dark Mode Text */
+    transition: color 0.4s ease;
+  }
+
+  .centered-layout.light-mode {
+    color: #000000; /* Light Mode Text */
+  }
+
+  /* Header Centering */
+  .header {
+    position: fixed; top: 0; width: 100%;
+    display: flex; justify-content: center;
+    padding: 60px 0; z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  .header.scrolled { padding: 20px 0; backdrop-filter: blur(10px); }
+  
+  .header-inner {
+    display: flex; align-items: center; gap: 30px;
+  }
+
+  .brand-name {
+    font-size: 5rem; /* Massive size */
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    margin: 0;
   }
 
   .theme-btn {
-    width: 48px;
-    height: 48px;
-    border: 1px solid rgba(113, 163, 193, 0.3);
-    border-radius: 50%;
-    color: #71a3c1;
-    transition: all 0.3s ease;
+    background: none; border: none; padding: 0; cursor: none;
+    display: flex; align-items: center;
   }
 
-  .theme-btn:hover {
-    background-color: #71a3c1;
-    color: white;
+  /* Content Styling */
+  .content-container {
+    max-width: 800px; width: 90%;
+    padding-top: 300px; padding-bottom: 100px;
+    text-align: center;
   }
 
-  .label {
-    font-size: 0.8rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 0.5em;
-    opacity: 0.6;
-    color: #71a3c1;
+  .hero h2 {
+    font-size: 2.5rem; line-height: 1.2; font-weight: 700;
+    margin-bottom: 120px;
   }
 
-  .bg-black { background-color: #000000; color: #71a3c1; }
-  .bg-white { background-color: #ffffff; color: #71a3c1; }
+  .label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5em; opacity: 0.5; margin-bottom: 60px; }
+
+  /* Job List Styling */
+  .job { text-align: left; margin-bottom: 80px; width: 100%; }
+  .job-row { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; }
+  .job h3 { font-size: 2rem; margin: 0; font-weight: 800; }
+  .date { font-family: monospace; opacity: 0.6; }
+  .role { font-style: italic; margin-bottom: 25px; font-size: 1.2rem; }
+
+  /* SINGLE BULLET FIX */
+  .single-bullet-list {
+    list-style: none !important; /* Force browser to remove default bullet */
+    padding: 0;
+  }
+  .single-bullet-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+  .single-bullet-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: inherit; /* Matches the theme color automatically */
+  }
+
+  /* Footer */
+  .footer { display: flex; justify-content: center; gap: 40px; border-top: 1px solid rgba(113, 163, 193, 0.2); padding-top: 60px; margin-top: 50px; }
+  .footer a { color: inherit; text-decoration: none; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.2em; opacity: 0.6; }
+  .footer a:hover { opacity: 1; }
+
+  /* Custom Cursor */
+  .custom-cursor {
+    position: fixed; width: 12px; height: 12px; background-color: #71a3c1;
+    border-radius: 50%; pointer-events: none; z-index: 10000; transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, opacity 0.3s;
+  }
+  .custom-cursor.hovering { width: 50px; height: 50px; opacity: 0.3; }
+
+  @media (max-width: 768px) {
+    .brand-name { font-size: 2.5rem; }
+    .hero h2 { font-size: 1.8rem; }
+    .job-row { flex-direction: column; }
+  }
 </style>
