@@ -29,7 +29,6 @@ declare module '$env/static/private' {
 	export const allegro_license_mode: string;
 	export const ALLUSERSPROFILE: string;
 	export const APPDATA: string;
-	export const CDS_LISTENER_MODE: string;
 	export const ChocolateyInstall: string;
 	export const ChocolateyLastPathUpdate: string;
 	export const CHROME_CRASHPAD_PIPE_NAME: string;
@@ -41,11 +40,12 @@ declare module '$env/static/private' {
 	export const ComSpec: string;
 	export const DriverData: string;
 	export const EDITOR: string;
-	export const EFC_36500_1262719628: string;
-	export const EFC_36500_1592913036: string;
-	export const EFC_36500_2283032206: string;
-	export const EFC_36500_2775293581: string;
-	export const EFC_36500_3789132940: string;
+	export const EFC_1892_1262719628: string;
+	export const EFC_1892_1592913036: string;
+	export const EFC_1892_2283032206: string;
+	export const EFC_1892_2775293581: string;
+	export const EFC_1892_344590478: string;
+	export const EFC_1892_3789132940: string;
 	export const FPS_BROWSER_APP_PROFILE_STRING: string;
 	export const FPS_BROWSER_USER_PROFILE_STRING: string;
 	export const GIT_ASKPASS: string;
@@ -85,8 +85,6 @@ declare module '$env/static/private' {
 	export const NUMBER_OF_PROCESSORS: string;
 	export const OneDrive: string;
 	export const OneDriveCommercial: string;
-	export const OneDriveConsumer: string;
-	export const ORIGINAL_XDG_CURRENT_DESKTOP: string;
 	export const OS: string;
 	export const Path: string;
 	export const PATHEXT: string;
@@ -119,6 +117,7 @@ declare module '$env/static/private' {
 	export const VSCODE_GIT_ASKPASS_NODE: string;
 	export const VSCODE_GIT_IPC_HANDLE: string;
 	export const VSCODE_INJECTION: string;
+	export const VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
 	export const windir: string;
 }
 
@@ -152,7 +151,6 @@ declare module '$env/dynamic/private' {
 		allegro_license_mode: string;
 		ALLUSERSPROFILE: string;
 		APPDATA: string;
-		CDS_LISTENER_MODE: string;
 		ChocolateyInstall: string;
 		ChocolateyLastPathUpdate: string;
 		CHROME_CRASHPAD_PIPE_NAME: string;
@@ -164,11 +162,12 @@ declare module '$env/dynamic/private' {
 		ComSpec: string;
 		DriverData: string;
 		EDITOR: string;
-		EFC_36500_1262719628: string;
-		EFC_36500_1592913036: string;
-		EFC_36500_2283032206: string;
-		EFC_36500_2775293581: string;
-		EFC_36500_3789132940: string;
+		EFC_1892_1262719628: string;
+		EFC_1892_1592913036: string;
+		EFC_1892_2283032206: string;
+		EFC_1892_2775293581: string;
+		EFC_1892_344590478: string;
+		EFC_1892_3789132940: string;
 		FPS_BROWSER_APP_PROFILE_STRING: string;
 		FPS_BROWSER_USER_PROFILE_STRING: string;
 		GIT_ASKPASS: string;
@@ -208,8 +207,6 @@ declare module '$env/dynamic/private' {
 		NUMBER_OF_PROCESSORS: string;
 		OneDrive: string;
 		OneDriveCommercial: string;
-		OneDriveConsumer: string;
-		ORIGINAL_XDG_CURRENT_DESKTOP: string;
 		OS: string;
 		Path: string;
 		PATHEXT: string;
@@ -242,6 +239,7 @@ declare module '$env/dynamic/private' {
 		VSCODE_GIT_ASKPASS_NODE: string;
 		VSCODE_GIT_IPC_HANDLE: string;
 		VSCODE_INJECTION: string;
+		VSCODE_PYTHON_AUTOACTIVATE_GUARD: string;
 		windir: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;

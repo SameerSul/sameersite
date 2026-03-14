@@ -1,54 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    cursor: none;
-}
-
 * {
-    font-family: 'Roboto', sans-serif;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
 }
 
-h1,
-h2,
-h3,
-.poppins {
-    font-family: 'Poppins', sans-serif;
-}
-
-.blueShadow {
-    box-shadow: 0px 14px 55px rgba(109, 40, 217, 0.45);
-}
-
-.specialSpin {
-    animation: spin 5s linear infinite;
-}
-
-@keyframes spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.blur-load {
-    background-size: cover;
-    background-position: center;
-}
-
-.img {
-    object-position: center;
-    object-fit: cover;
-}
-
-body {
-    cursor:none;
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
